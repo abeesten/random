@@ -1,0 +1,323 @@
+<?php
+/* 6Sept2014 from 0905 */
+/**
+ * @file
+ * Default theme implementation to display the basic html structure of a single
+ * Drupal page.
+ *
+ * Variables:
+ * - $css: An array of CSS files for the current page.
+ * - $language: (object) The language the site is being displayed in.
+ *   $language->language contains its textual representation.
+ *   $language->dir contains the language direction. It will either be 'ltr' or
+ *   'rtl'.
+ * - $rdf_namespaces: All the RDF namespace prefixes used in the HTML document.
+ * - $grddl_profile: A GRDDL profile allowing agents to extract the RDF data.
+ * - $head_title: A modified version of the page title, for use in the TITLE
+ *   tag.
+ * - $head_title_array: (array) An associative array containing the string parts
+ *   that were used to generate the $head_title variable, already prepared to be
+ *   output as TITLE tag. The key/value pairs may contain one or more of the
+ *   following, depending on conditions:
+ *   - title: The title of the current page, if any.
+ *   - name: The name of the site.
+ *   - slogan: The slogan of the site, if any, and if there is no title.
+ * - $head: Markup for the HEAD section (including meta tags, keyword tags, and
+ *   so on).
+ * - $styles: Style tags necessary to import all CSS files for the page.
+ * - $scripts: Script tags necessary to load the JavaScript files and settings
+ *   for the page.
+ * - $page_top: Initial markup from any modules that have altered the
+ *   page. This variable should always be output first, before all other dynamic
+ *   content.
+ * - $page: The rendered page content.
+ * - $page_bottom: Final closing markup from any modules that have altered the
+ *   page. This variable should always be output last, after all other dynamic
+ *   content.
+ * - $classes String of classes that can be used to style contextually through
+ *   CSS.
+ *STPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPP
+ * @see bootstrap_preprocess_html()STPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPP
+ * @see template_preprocess()STPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPP
+ * @see template_preprocess_html()STPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPP
+ * @see template_process()STPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPP
+ *STPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPPSTPP
+ * @ingroup themeable
+ */
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+
+<html lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces;?>>
+
+
+<head profile="<?php print $grddl_profile; ?>">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta charset="utf-8">
+<meta name="twitter:widgets:csp" content="on">
+<meta property="og:image" content="http://stpp.fordschool.umich.edu/assets/img/stpp-logo.png">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="twitter:widgets:csp" content="on">
+<meta property="og:image" content="http://stpp.fordschool.umich.edu/assets/img/YPL-logo.png">
+
+<link rel="shortcut icon" href="http://stpp.fordschool.umich.edu/assets/img/favicon.ico" type="image/vnd.microsoft.icon">
+
+<!--[if IE]><![endif]-->
+
+<title>News &amp; Events | Science, Technology, and Public Policy Program</title>
+
+
+
+<link type="text/css" rel="stylesheet" href="http://stpp.fordschool.umich.edu/assets/css/forms.css" media="all">
+<link type="text/css" rel="stylesheet" href="http://stpp.fordschool.umich.edu/assets/css/jquery-ui.css" media="all">
+<link type="text/css" rel="stylesheet" href="http://stpp.fordschool.umich.edu/assets/css/modules.css" media="all">
+<link type="text/css" rel="stylesheet" href="http://stpp.fordschool.umich.edu/assets/css/bootstrap.css" media="all">
+<link type="text/css" rel="stylesheet" href="http://stpp.fordschool.umich.edu/assets/css/main.css" media="all">
+<link type="text/css" rel="stylesheet" href="http://stpp.fordschool.umich.edu/assets/css/symbols.css" media="all">
+<link type="text/css" rel="stylesheet" href="http://stpp.fordschool.umich.edu/assets/css/owl.css" media="all" title="no title">
+<link type="text/css" rel="stylesheet" href="http://stpp.fordschool.umich.edu/assets/css/animatedcollapse-multi-items.css" media="all" title="no title">
+<link type="text/css" rel="stylesheet" href="http://stpp.fordschool.umich.edu/assets/css/font-awesome.css" media="all">
+
+<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<link rel="stylesheet" href="http://stpp.fordschool.umich.edu/assets/css/ypl-brand.css" media="screen">
+
+<style>
+    .fs-frontpage-parallax {
+        background-image: public: //parallax_admin/parallax-bg.jpg !important;background-size:200%;}
+	.menu-block-22 {
+	display:none;
+	}
+</style>
+
+<script>
+    var parallaxItems = [
+        ['.fs-frontpage-parallax', 'bottom-to-top', 'none'],
+    ];
+</script>
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="http://fordschool.umich.edu/sites/all/themes/umfs_bootstrap_subtheme/css/all-ie-only.css" media="all" />
+<![endif]-->
+
+<!-- HTML5 element support for IE6-8 -->
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script src="http://stpp.fordschool.umich.edu/assets/js/jquery.js"></script>
+<script src="http://stpp.fordschool.umich.edu/assets/js/jquery-ui.js"></script>
+<script src="http://stpp.fordschool.umich.edu/assets/js/bootstrap.min.js"></script>
+<script src="http://stpp.fordschool.umich.edu/assets/js/mobile-helper.js"></script>
+<script src="http://stpp.fordschool.umich.edu/assets/js/jquery.easing.1.3.js"></script>
+<script src="http://stpp.fordschool.umich.edu/assets/js/jquery.mousewheel.js"></script>
+<script src="http://stpp.fordschool.umich.edu/assets/js/jquery.vaccordion.js"></script>
+
+<script>
+
+        jQuery.noConflict();
+        (function($) {
+            $(document).ready(
+                function() {
+                    $('#va-accordion').vaccordion({
+                        animOpacity: 0.5,
+                        selectOpenSlice: true
+                    });
+                }
+            );
+        })(jQuery)
+		
+	
+</script>
+
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-83371268-1', 'auto');
+    ga('send', 'pageview');
+</script>
+
+
+    <!--%%%-->
+
+   
+
+</head>
+
+
+<?php $new_classes = str_replace('page-calendar', 'page-events-calendar', $classes); ?>
+
+<?php $new_classes = $classes; ?>
+
+<body class="<?php print $new_classes; ?>" <?php print $attributes;?>>
+
+<div class="umfs-mobile-menu">
+    <div class="region region-umfs-mobile-menu">
+	    
+        <section id="block-boxes-fs-main-menu-for-mobile" class="block block-boxes block-boxes-simple clearfix">
+			<div id="boxes-box-fs_main_menu_for_mobile" class="boxes-box">
+                <div class="boxes-box-content">
+                    <button type="button" class="btn btn-danger collapsed" data-toggle="collapse" data-target="#fs-mainmenu-mbl-clpsbl"></button>
+                    <div id="fs-mainmenu-mbl-clpsbl" class="collapse" style="height: 10px;">
+                        <ul class="menu nav">
+                            <form class="gss form-search content-search" id="cse-search-box" method="GET" action="http://stpp.fordschool.umich.edu/search/index.php" accept-charset="UTF-8">
+                                <div>
+                                    <div>
+                                        <div class="input-group">
+                                            <input title="Search" placeholder="Search" class="form-control hint-enabled form-text ui-autocomplete-input" type="text" id="mainSearch" name="q" value="" size="15" maxlength="128" autocomplete="off" style="display: none;">
+                                                <span class="input-group-btn">
+                                                    <button type="submit" class="btn btn-default">Search</button>
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <li class="first expanded dropdown"><a href="http://stpp.fordschool.umich.edu/what-is-stpp/" data-target="#">About<span class="caret"></span></a></li>
+                            <li class="expanded dropdown"><a href="http://stpp.fordschool.umich.edu/education/" data-target="#">Education<span class="caret"></span></a></li>
+                            <li class="expanded dropdown"><a href="http://stpp.fordschool.umich.edu/publications/" data-target="#">Research &amp; Policy Engagement<span class="caret"></span></a></li>
+                            <li class="expanded dropdown"><a href="http://stpp.fordschool.umich.edu/careers/" data-target="#">Careers<span class="caret"></span></a></li>
+                            <li class="expanded dropdown"><a href="http://stpp.fordschool.umich.edu/u-m/" data-target="#">Related Programs<span class="caret"></span></a></li>
+                            <li class="expanded dropdown"><a href="http://stpp.fordschool.umich.edu/news-events/" data-target="#">News &amp; Events<span class="caret"></span></a></li>
+                            <li class="expanded dropdown"><a href="http://stpp.fordschool.umich.edu/giving/" data-target="#">Giving<span class="caret"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.block -->
+        
+    </div>
+</div>
+
+<div class="umfs-header">
+    <div class="region region-umfs-header blue" style="top: 0px;">
+        <section id="block-umfs-custom-umfs-logo-block" class="block block-umfs-custom clearfix" style="padding: 28px 0; height: inherit;">
+            <a href="http://stpp.fordschool.umich.edu/"><img class="fs-logo-header-desktop" typeof="foaf:Image" src="http://stpp.fordschool.umich.edu/assets/img/stpp-logo-deskweb-01.png" ></a>
+            <a href="http://stpp.fordschool.umich.edu/"><img class="fs-logo-header-mobile" typeof="foaf:Image" src="http://stpp.fordschool.umich.edu/assets/img/stpp-logo-mobileweb-01.png" ></a>
+        </section>
+        
+        <!-- /.block -->
+        <section id="block-menu-block-17" class="block block-menu-block fs-header-supernav clearfix">
+        <ul class="menu nav">
+	        	<li class="first leaf menu-mlid-771"><a href="http://stpp.fordschool.umich.edu/contact/" title="">Contact Us</a></li>
+				<li class="leaf menu-mlid-1234"><a href="http://stpp.fordschool.umich.edu/site-map/" title="">Site Map</a></li>
+				<li class="leaf menu-mlid-397"><a href="http://fordschool.umich.edu/" title="" target="_blank">Ford School</a></li>
+				<li class="last leaf menu-mlid-397"><a href="http://umich.edu/" title="" target="_blank">U-M</a></li>
+		</ul>
+        </section>
+        <!-- /.block -->
+        
+        <section role="search" aria-labelledby="searchLabel" id="block-search-form" class="block block-search fs-search-box-header clearfix">
+
+
+            <form class="gss form-search content-search" id="cse-search-box" method="GET" action="http://stpp.fordschool.umich.edu/search/index.php" accept-charset="UTF-8">
+                <div>
+                    <div>
+                        <div class="input-group">
+                            <input type="hidden" name="cx" value="001878343198248476009:bdis6vsocbc" />
+                           <input type="hidden" name="cof" value="FORID:9" />
+                            <input type="hidden" name="ie" value="UTF-8" />
+                            <input title="Search" placeholder="Search" class="form-control hint-enabled form-text ui-autocomplete-input" type="text" id="mainSearch" name="q" value="" size="15" maxlength="128" autocomplete="off" style="display: none;">
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-default">Search <i class="fa  fa-angle-double-right"></i></button>
+                                </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+        <!-- /.block -->
+        
+        <section role="navigation" aria-label="Site Navigation" id="block-menu-block-18" class="block block-menu-block fs-header-main-menu clearfix light-blue">
+
+
+            <div class="menu-block-wrapper menu-block-18 menu-name-main-menu parent-mlid-0 menu-level-1">
+                <ul class="menu nav">
+                    <!--li class="first expanded menu-mlid-478 dropdown"><a href="http://stpp.fordschool.umich.edu" data-target="#">Home <span class="caret"></span></a>
+                    </li-->
+                    <li class="first expanded menu-mlid-1079 dropdown"><a href="http://stpp.fordschool.umich.edu/what-is-stpp/" data-target="#">About<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li class="first leaf menu-mlid-491"><a href="http://stpp.fordschool.umich.edu/what-is-stpp/" title="What is Science &amp; Technology Policy?">What is Science &amp; Technology Policy?</a></li>
+                            <li class="leaf menu-mlid-493"><a href="http://stpp.fordschool.umich.edu/directors-message/" title="Director&#39;s Message">Director&#39;s Message</a></li>
+                            <li class="leaf menu-mlid-491"><a href="http://stpp.fordschool.umich.edu/why-stpp/" title="Why STPP at UM?">Why STPP at UM?</a></li>
+                            <li class="leaf menu-mlid-494"><a href="http://stpp.fordschool.umich.edu/people/" title="People">People</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="first expanded menu-mlid-1079 dropdown"><a href="http://stpp.fordschool.umich.edu/education/" data-target="#">Education<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                        <li class="first leaf menu-mlid-490"><a href="http://stpp.fordschool.umich.edu/education/" title="Overview">Overview</a></li>
+                            <li class=" leaf menu-mlid-491"><a href="http://stpp.fordschool.umich.edu/graduate-certificate/" title="Graduate Certificate">Graduate Certificate</a></li>
+                            <li class="leaf menu-mlid-492"><a href="http://stpp.fordschool.umich.edu/undergrad-courses/" title="Undergraduate Courses">Undergraduate Courses</a></li>
+                            <li class="leaf menu-mlid-493"><a href="http://stpp.fordschool.umich.edu/postdoctoral-fellowship/" title="Postdoctoral Fellowship">Postdoctoral Fellowship</a></li>
+                            <li class="leaf menu-mlid-494"><a href="http://stpp.fordschool.umich.edu/visiting-scholars/" title="Visiting Scholars">Visiting Scholars</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="expanded menu-mlid-1082 dropdown"><a href="http://stpp.fordschool.umich.edu/publications/" data-target="#">Research &amp; Policy Engagement<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li class="first leaf menu-mlid-503"><a href="http://stpp.fordschool.umich.edu/publications/" title="Featured Publications">Featured Publications</a></li>
+                            <li class="leaf menu-mlid-502"><a href="http://stpp.fordschool.umich.edu/faculty-affiliates/" title="Faculty Affiliates">Faculty Affiliates</a></li>
+                            <li class="leaf menu-mlid-504"><a href="http://stpp.fordschool.umich.edu/consultations/" title="Policy Consultations">Policy Consultations</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="expanded menu-mlid-1080 dropdown"><a href="http://stpp.fordschool.umich.edu/careers/" data-target="#">Careers<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li class="first leaf menu-mlid-505"><a href="http://stpp.fordschool.umich.edu/careers/" title="What is an STPP Career?">What is an STPP Career?</a></li>
+                            <li class="first leaf menu-mlid-506"><a href="http://stpp.fordschool.umich.edu/alumni/" title="Alumni Profiles">Alumni Profiles</a></li>
+                            <li class="first leaf menu-mlid-507"><a href="http://stpp.fordschool.umich.edu/intern-fellow/" title="Internships, Fellowships, Jobs">Internships, Fellowships, Jobs</a></li>
+                        </ul>
+                    </li>
+                    <li class="expanded menu-mlid-1081 dropdown"><a href="http://stpp.fordschool.umich.edu/u-m/" data-target="#">Related Programs<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                    	<li class="first leaf menu-mlid-508"><a href="http://stpp.fordschool.umich.edu/u-m/" title="University of Michigan">University of Michigan</a></li>
+                        <li class="first leaf menu-mlid-509"><a href="http://stpp.fordschool.umich.edu/domestic/" title="Domestic">Domestic</a></li>
+                        <li class="first leaf menu-mlid-510"><a href="http://stpp.fordschool.umich.edu/international/" title="International">International</a></li></ul>
+                   
+                    
+                     <li class="expanded menu-mlid-1084 dropdown"><a href="http://stpp.fordschool.umich.edu/news-events/" data-target="#">News &amp; Events<span class="caret"></span></a>
+                           <ul class="dropdown-menu">
+                            <li class="first leaf menu-mlid-511"><a href="http://stpp.fordschool.umich.edu/news-events/" title="News">News</a></li>
+                            <li class="first leaf menu-mlid-512"><a href="http://fordschool.umich.edu/stpp/events/upcoming" title="Events">Events</a></li>
+                            <li class="first leaf menu-mlid-513"><a href="http://stpp.fordschool.umich.edu/video/" title="Video">Video</a></li>
+                            <li class="first leaf menu-mlid-513"><a href="http://stpp.fordschool.umich.edu/newsletter/" title="Newsletter">Newsletters</a></li>
+                        </ul>
+                     </li>
+                    <li class="expanded menu-mlid-1084 dropdown"><a href="http://stpp.fordschool.umich.edu/giving/" data-target="#">Giving<span class="caret"></span></a>
+                     </li>                  
+                </ul>
+            </div>
+
+        </section>
+        <!-- /.block -->
+    </div>
+</div>
+<!-- /.umfs-header -->
+
+
+<div id="skip-link">
+    <a href="#main-content" class="element-invisible element-focusable"><?php print t('Skip to main content'); ?></a>
+</div>
+
+
+
+(((
+<?php print $page_top; ?>
+)))
+
+
+
+<?php print $page; ?>
+
+###
+<?php print $page_bottom; ?>
+
+</body>
+</html>
