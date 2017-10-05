@@ -1,257 +1,263 @@
-<div style="display:none">
-   PS site player 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+
+<html lang="en" dir="ltr" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/terms/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:og="http://ogp.me/ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:sioc="http://rdfs.org/sioc/ns#" xmlns:sioct="http://rdfs.org/sioc/types#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" class="js">
+<div class="field-name-body">
+  <div style="display:none">
+     PS site player 
+  </div>
+  <style type="text/css">
+     body, html {
+     height: 100%;
+     width: 100%;
+     margin:0;
+     }
+     /* container for the tabbed menu, player and playlist */
+     .outer {
+     width: 100%;
+     height: 100%;
+     display: block;
+     position: relative;
+     margin:0;
+     background-color: #000;
+     }
+     /* tabbed menu */
+     #menu {
+     float: right;
+     padding:0;
+     padding-right: 15px;
+     margin:0;
+     color:#003768;
+     font-family: arial, helvetica, sans-serif;
+     white-space:nowrap;
+     list-style-type:none;
+     }
+     #menu li {
+     display:inline;
+     }
+     #menu li input{
+     min-width: 50px;
+     height: 30px;
+     padding:0.2em 1em;
+     background:#003768;
+     color:##003768;
+     text-decoration:none;
+     float:left;
+     border:1px solid #CCC;
+     border-bottom:1px solid #000;
+     border-top-left-radius: 6px;
+     border-top-right-radius: 6px;
+     }
+     .button {
+     background:#003768;
+     }
+     #menu li input:hover {
+     background:white;
+     color:#fff;
+     }
+     /* set the player to be responsive */
+     .myplayer {
+     width: 100%;
+     display: block;
+     position: absolute;
+     margin:0;
+     float:left;
+     background-color: #000;
+     }
+     .myplayer:after {
+     padding-bottom: 56.25%;
+     display: block;
+     content: '';
+     }
+     .video-js {
+     position: absolute;
+     top: 0;
+     bottom: 0;
+     right: 0;
+     left: 0;
+     width: 100% !important;
+     height: 100% !important;
+     float:left;
+     }
+     /* playlist stacked below the player */
+     @media only screen and (max-width:49.999em) and (min-width:20em) {
+     .outer  {
+     background-color: #000;
+     overflow-y: hidden;
+     }
+     .vidWrapper {
+     height:100%;
+     }
+     .myplayer {
+     position: relative;
+     }
+     .playlist-wrapper{
+     width: 100%;
+     overflow-y: scroll;
+     clear:left;
+     height:100%;
+     overflow-y: hidden;
+     }
+     .vjs-playlist {
+     max-height: 433px !important;
+     position: relative;
+     top: 15px;
+     box-sizing: border-box;
+     -moz-box-sizing: border-box;
+     }
+     .vjs-playlist .vjs-playlist-item  {
+     min-height: 70px;
+     }
+     .vjs-playlist-item.vjs-selected {
+     background: #666;
+     }
+     .vjs-mouse.vjs-playlist .vjs-playlist-description {
+     white-space: normal;
+     min-height: 70px;
+     line-height: 13px;
+     }
+     .vjs-playlist-description {
+     font-size:10px;
+     }
+     .vjs-playlist-name {
+     font-size:12px;
+     }
+     }
+     /* horizontal playlist below the player */
+     @media only screen and (max-width:74.999em) and (min-width:50em) {
+     .outer  {
+     background-color: #000;
+     overflow-y: hidden;
+     }
+     .vidWrapper {
+     height:100%;
+     }
+     .myplayer {
+     position: relative;
+     }
+     .playlist-wrapper{
+     width: 100%;
+     overflow-y: scroll;
+     clear:left;
+     height:100%;
+     overflow-y: hidden;
+     }
+     .vjs-playlist {
+     max-height: 433px !important;
+     position: relative;
+     top: 15px;
+     box-sizing: border-box;
+     -moz-box-sizing: border-box;
+     }
+     .vjs-playlist .vjs-playlist-item  {
+     min-height: 70px;
+     }
+     .vjs-playlist-item.vjs-selected {
+     background: #666;
+     }
+     .vjs-mouse.vjs-playlist .vjs-playlist-description {
+     white-space: normal;
+     min-height: 70px;
+     line-height: 13px;
+     }
+     .vjs-playlist-description {
+     font-size:10px;
+     }
+     .vjs-playlist-name {
+     font-size:12px;
+     }
+     }
+     /* vertical playlist to the right of the player */
+     @media only screen and (max-width: 2500px) and (min-width:75em) {
+     .outer  {
+     overflow-y: hidden;
+     min-height: 550px;
+     }  
+     /* the player */
+     .myplayer {
+     width: 99%;
+     position: relative;
+     }
+     /* the player */
+     .video-js {
+     float: left;
+     }
+     /* the playlist */
+     .playlist-wrapper{
+     width:101.5%;
+     height: 100%;
+     overflow-x: scroll;
+     }
+     .vjs-playlist-item.vjs-selected {
+     background: #666;
+     }
+     .vjs-playlist-description {
+     font-size:10px;
+     }
+     .vjs-playlist-name {
+     font-size:12px;
+     }
+     }
+  </style>
+  <div class="outer">
+     <div>
+        <ul id="menu">
+           <li><input id="tab0" type="button" class="button" onclick="processTab(0);" value="2017"></input></li>
+           <li><input id="tab1" type="button" class="button" onclick="processTab(1);" value="2015"></li>
+           <li><input id="tab2" type="button" class="button" onclick="processTab(2);" value="2014"></li>
+           <li><input id="tab3" type="button" class="button" onclick="processTab(3);" value="2012"></li>
+           <li><input id="tab4" type="button" class="button" onclick="processTab(4);" value="2011"></li>
+           <li><input id="tab5" type="button" class="button" onclick="processTab(5);" value="2009"></li>
+           <li><input id="tab6" type="button" class="button" onclick="processTab(6);" value="2008"></li>
+           <li><input id="tab7" type="button" class="button" onclick="processTab(7);" value="2007"></li>
+           <li><input id="tab8" type="button" class="button" onclick="processTab(8);" value="2006"></li>
+           <li><input id="tab9" type="button" class="button" onclick="processTab(9);" value="2005"></li>
+        </ul>
+     </div>
+     <div class="myplayer">
+        <video id="video_1"      
+           data-account="20782355001"
+           data-player="BJBCAqU8e"
+           data-embed="default"
+           class="video-js" controls></video>
+     </div>
+     <!-- end myplayer-->
+     <div class="playlist-wrapper">
+        <ol class="vjs-playlist"></ol>
+     </div>
+     <!-- end playlist-weapper -->
+  </div>
+  <!-- end outer -->
+  <script src="//players.brightcove.net/20782355001/BJBCAqU8e_default/index.min.js"></script>
+  <!--  <script src="//players.brightcove.net/1752604059001/b547079e-00cc-4585-b354-04020a7ed70a_default/index.min.js"></script> -->
+  <script id="pageScript" type="text/javascript">
+     var myPlayer,
+     playlistIds = ["5515762075001", "5516051289001", "5515815680001",  "5516025730001", "5515762076001", "5515815682001", "5516025019001", "5516051290001", "5516025020001", "5515762077001"],
+         playlistIdsLength = playlistIds.length,
+         tabs = document.getElementsByClassName("button"),
+         currentTab,
+         currentTabName,
+         playlistNames = [];
+     videojs("video_1").ready(function(){
+         myPlayer = this;
+         processTab(0)
+     });
+     function processTab (index) {
+         resetTabs();
+         document.getElementById("tab" + index).setAttribute("style","background:#FFF;color: #003768; border-bottom: 1px solid #003768;"); 
+         loadPlaylist(playlistIds[index]);
+     };
+     function loadPlaylist (currentId) {
+         myPlayer.catalog.getPlaylist(currentId, function(error, playlist){
+             myPlayer.catalog.load(playlist);
+         });
+     };
+     function resetTabs () {
+         var i,
+             iMax = tabs.length;
+         for (i = 0; i < iMax; i++) {
+             tabs[i].setAttribute("style", "background: #003768;color: #fff;")
+         }
+     }
+  </script>
 </div>
-<style type="text/css">
-   body, html {
-   height: 100%;
-   width: 100%;
-   margin:0;
-   }
-   /* container for the tabbed menu, player and playlist */
-   .outer {
-   width: 100%;
-   height: 100%;
-   display: block;
-   position: relative;
-   margin:0;
-   background-color: #000;
-   }
-   /* tabbed menu */
-   #menu {
-   float: right;
-   padding:0;
-   padding-right: 15px;
-   margin:0;
-   color:#003768;
-   font-family: arial, helvetica, sans-serif;
-   white-space:nowrap;
-   list-style-type:none;
-   }
-   #menu li {
-   display:inline;
-   }
-   #menu li input{
-   min-width: 50px;
-   height: 30px;
-   padding:0.2em 1em;
-   background:#003768;
-   color:##003768;
-   text-decoration:none;
-   float:left;
-   border:1px solid #CCC;
-   border-bottom:1px solid #000;
-   border-top-left-radius: 6px;
-   border-top-right-radius: 6px;
-   }
-   .button {
-   background:#003768;
-   }
-   #menu li input:hover {
-   background:white;
-   color:#fff;
-   }
-   /* set the player to be responsive */
-   .myplayer {
-   width: 100%;
-   display: block;
-   position: absolute;
-   margin:0;
-   float:left;
-   background-color: #000;
-   }
-   .myplayer:after {
-   padding-bottom: 56.25%;
-   display: block;
-   content: '';
-   }
-   .video-js {
-   position: absolute;
-   top: 0;
-   bottom: 0;
-   right: 0;
-   left: 0;
-   width: 100% !important;
-   height: 100% !important;
-   float:left;
-   }
-   /* playlist stacked below the player */
-   @media only screen and (max-width:49.999em) and (min-width:20em) {
-   .outer  {
-   background-color: #000;
-   overflow-y: hidden;
-   }
-   .vidWrapper {
-   height:100%;
-   }
-   .myplayer {
-   position: relative;
-   }
-   .playlist-wrapper{
-   width: 100%;
-   overflow-y: scroll;
-   clear:left;
-   height:100%;
-   overflow-y: hidden;
-   }
-   .vjs-playlist {
-   max-height: 433px !important;
-   position: relative;
-   top: 15px;
-   box-sizing: border-box;
-   -moz-box-sizing: border-box;
-   }
-   .vjs-playlist .vjs-playlist-item  {
-   min-height: 70px;
-   }
-   .vjs-playlist-item.vjs-selected {
-   background: #666;
-   }
-   .vjs-mouse.vjs-playlist .vjs-playlist-description {
-   white-space: normal;
-   min-height: 70px;
-   line-height: 13px;
-   }
-   .vjs-playlist-description {
-   font-size:10px;
-   }
-   .vjs-playlist-name {
-   font-size:12px;
-   }
-   }
-   /* horizontal playlist below the player */
-   @media only screen and (max-width:74.999em) and (min-width:50em) {
-   .outer  {
-   background-color: #000;
-   overflow-y: hidden;
-   }
-   .vidWrapper {
-   height:100%;
-   }
-   .myplayer {
-   position: relative;
-   }
-   .playlist-wrapper{
-   width: 100%;
-   overflow-y: scroll;
-   clear:left;
-   height:100%;
-   overflow-y: hidden;
-   }
-   .vjs-playlist {
-   max-height: 433px !important;
-   position: relative;
-   top: 15px;
-   box-sizing: border-box;
-   -moz-box-sizing: border-box;
-   }
-   .vjs-playlist .vjs-playlist-item  {
-   min-height: 70px;
-   }
-   .vjs-playlist-item.vjs-selected {
-   background: #666;
-   }
-   .vjs-mouse.vjs-playlist .vjs-playlist-description {
-   white-space: normal;
-   min-height: 70px;
-   line-height: 13px;
-   }
-   .vjs-playlist-description {
-   font-size:10px;
-   }
-   .vjs-playlist-name {
-   font-size:12px;
-   }
-   }
-   /* vertical playlist to the right of the player */
-   @media only screen and (max-width: 2500px) and (min-width:75em) {
-   .outer  {
-   overflow-y: hidden;
-   min-height: 550px;
-   }  
-   /* the player */
-   .myplayer {
-   width: 99%;
-   position: relative;
-   }
-   /* the player */
-   .video-js {
-   float: left;
-   }
-   /* the playlist */
-   .playlist-wrapper{
-   width:101.5%;
-   height: 100%;
-   overflow-x: scroll;
-   }
-   .vjs-playlist-item.vjs-selected {
-   background: #666;
-   }
-   .vjs-playlist-description {
-   font-size:10px;
-   }
-   .vjs-playlist-name {
-   font-size:12px;
-   }
-   }
-</style>
-<div class="outer">
-   <div>
-      <ul id="menu">
-         <li><input id="tab0" type="button" class="button" onclick="processTab(0);" value="2017"></input></li>
-         <li><input id="tab1" type="button" class="button" onclick="processTab(1);" value="2015"></li>
-         <li><input id="tab2" type="button" class="button" onclick="processTab(2);" value="2014"></li>
-         <li><input id="tab3" type="button" class="button" onclick="processTab(3);" value="2012"></li>
-         <li><input id="tab4" type="button" class="button" onclick="processTab(4);" value="2011"></li>
-         <li><input id="tab5" type="button" class="button" onclick="processTab(5);" value="2009"></li>
-         <li><input id="tab6" type="button" class="button" onclick="processTab(6);" value="2008"></li>
-         <li><input id="tab7" type="button" class="button" onclick="processTab(7);" value="2007"></li>
-         <li><input id="tab8" type="button" class="button" onclick="processTab(8);" value="2006"></li>
-         <li><input id="tab9" type="button" class="button" onclick="processTab(9);" value="2005"></li>
-      </ul>
-   </div>
-   <div class="myplayer">
-      <video id="video_1"      
-         data-account="20782355001"
-         data-player="BJBCAqU8e"
-         data-embed="default"
-         class="video-js" controls></video>
-   </div>
-   <!-- end myplayer-->
-   <div class="playlist-wrapper">
-      <ol class="vjs-playlist"></ol>
-   </div>
-   <!-- end playlist-weapper -->
-</div>
-<!-- end outer -->
-<script src="//players.brightcove.net/20782355001/BJBCAqU8e_default/index.min.js"></script>
-<!--  <script src="//players.brightcove.net/1752604059001/b547079e-00cc-4585-b354-04020a7ed70a_default/index.min.js"></script> -->
-<script id="pageScript" type="text/javascript">
-   var myPlayer,
-   playlistIds = ["5515762075001", "5516051289001", "5515815680001",  "5516025730001", "5515762076001", "5515815682001", "5516025019001", "5516051290001", "5516025020001", "5515762077001"],
-       playlistIdsLength = playlistIds.length,
-       tabs = document.getElementsByClassName("button"),
-       currentTab,
-       currentTabName,
-       playlistNames = [];
-   videojs("video_1").ready(function(){
-       myPlayer = this;
-       processTab(0)
-   });
-   function processTab (index) {
-       resetTabs();
-       document.getElementById("tab" + index).setAttribute("style","background:#FFF;color: #003768; border-bottom: 1px solid #003768;"); 
-       loadPlaylist(playlistIds[index]);
-   };
-   function loadPlaylist (currentId) {
-       myPlayer.catalog.getPlaylist(currentId, function(error, playlist){
-           myPlayer.catalog.load(playlist);
-       });
-   };
-   function resetTabs () {
-       var i,
-           iMax = tabs.length;
-       for (i = 0; i < iMax; i++) {
-           tabs[i].setAttribute("style", "background: #003768;color: #fff;")
-       }
-   }
-</script>
+</html>
